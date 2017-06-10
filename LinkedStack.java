@@ -35,4 +35,30 @@ class LinkedStack
             Print(head.next);
         }
     }
+
+    public int Length(Node head)
+    {
+        Node temp=head;
+        int c=0;
+        while(temp!=null)
+        {
+            c++;
+            temp=temp.next;
+        }
+        return c;
+    }
+
+    public String Get(Node head, int idx)
+    {
+        Node current=head;
+        int c=0;
+        while(current!=null)
+        {
+            if(c==idx)
+                return current.item;
+            c++;
+            current=current.next;
+        }
+        return "";
+    }
 }

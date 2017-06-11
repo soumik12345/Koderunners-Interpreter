@@ -11,7 +11,7 @@ class Main
         System.out.println("Enter the number corresponding to the menu:");
         System.out.println("1. To create a new file.");
         System.out.println("2. To show the contents of the file.");
-        System.out.println("3. To Interpret a file.");
+        System.out.println("3. To Interpret a file and give the output.");
         int inp=sc.nextInt();
         switch(inp)
         {
@@ -40,10 +40,6 @@ class Main
             {
                 s+=((char)c);
             }
-            Interpreter I=new Interpreter();
-            I.breakCode(s);
-            I.createOperation(s);
-            I.printArrayList();
             break;
         }
     }

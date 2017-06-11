@@ -2,12 +2,13 @@ import java.io.*;
 import java.util.*;
 class Interpreter
 {
-    Statck memory=new Stack();
-    ArrayList<String> a=new ArrayList<String>(0);
+    LinkedStack memory=new LinkedStack();
+    FileHandler2 F=new FileHandler2();
+    ArrayList<String> lines;
     ArrayList<Integer> opCode=new ArrayList<Integer>(0);
     int n=0;
 
-    public static boolean isInteger(String s)
+    public boolean isInteger(String s)
     {
         try { 
             Integer.parseInt(s); 
@@ -19,79 +20,27 @@ class Interpreter
         return true;
     }
 
-    void breakCode(String code)
+    public void getLines()throws Exception
     {
-        String s="";
-        for(int i=0;i<code.length();i++)
-        {
-            char ch=code.charAt(i);
-            if(ch!='\n')
-                s+=ch;
-            else
-            {
-                a.add(s);
-                s="";
-            }
-            if(i==code.length()-1)
-            {
-                a.add(s);
-                s="";
-            }
-        }
+        lines=F.getEachLine();
     }
 
-    void printArrayList()
+    public int OpCodeInLine(String s)
     {
-        for(int i=0;i<a.size();i++)
-            System.out.println(a.get(i));
-        System.out.println();
-        for(int i=0;i<opCode.size();i++)
-            System.out.println(opCode.get(i));
+        Scanner sc=new Scanner(new String(s));
+        int c=0;
+        while(sc.hasNext())
+        {
+            String t=sc.useDelimiter(" ").next();
+            if(t.equalsIgnoreCase("Koderunners"))
+                c++;
+        }
+        return c;
     }
 
-    void ineterpret(int opCode)
+    public void getOpCode()
     {
-        switch(opCode)
-        {
-            case 0:
-            System.exit(0);
-            break;
-
-            case 1:
-            memory.push("Koderunners");
-            break;
-
-            case 2:
-            n=memory.size();
-            if(isInteger(memory.get(n-1)) && isInteger(memory.get(n-2)))
-                memory.push(Integer.toString(Integer.parseInt(memory.get(n-1))+Integer.parseInt(memory.get(n-2))));
-            else
-                memory.push(memory.get(n-1)+memory.get(n-1));
-            break;
-
-            case 3:
-            n=memory.size();
-            if(isInteger(memory.get(n-1)) && isInteger(memory.get(n-2)))
-                memory.push(Integer.toString(Integer.parseInt(memory.get(n-1))-Integer.parseInt(memory.get(n-2))));
-            else
-                System.out.print("Subraction not possible.");
-            break;
-
-            case 4:
-            n=memory.size();
-            if(isInteger(memory.get(n-1)) && isInteger(memory.get(n-2)))
-                memory.push(Integer.toString(Integer.parseInt(memory.get(n-1))*Integer.parseInt(memory.get(n-2))));
-            else
-                System.out.print("Multiplication not possible.");
-            break;
-
-            case 5:
-            if(memory.get(n-1).equals(memory.get(n-2)))
-                memory.push("true");
-            else
-                memory.push("false");
-            break;
-
-        }
+        for(int i=0;i<lines.size();i++)
+            opCode.add(OpCodeInLine(lines.get(i)));
     }
 }

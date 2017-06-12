@@ -37,10 +37,4 @@ class Interpreter
         }
         return c;
     }
-
-    public void getOpCode()
-    {
-        for(int i=0;i<lines.size();i++)
-            opCode.add(OpCodeInLine(lines.get(i)));
-    }
 }

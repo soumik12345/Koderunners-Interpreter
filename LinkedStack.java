@@ -1,12 +1,12 @@
 import java.util.*;
 class LinkedStack
 {
-    private class Node
+    public class Node
     {
         String item;
         Node next;
     }
-    private Node first=null;
+    public Node first=null;
     public boolean isEmpty()
     {
         return first==null;
@@ -31,14 +31,14 @@ class LinkedStack
     {
         if(head!=null)
         {
-            System.out.print(head.item+"->");
+            System.out.println(head.item);
             Print(head.next);
         }
     }
 
-    public int Length(Node head)
+    public int Length()
     {
-        Node temp=head;
+        Node temp=first;
         int c=0;
         while(temp!=null)
         {
@@ -48,9 +48,9 @@ class LinkedStack
         return c;
     }
 
-    public String Get(Node head, int idx)
+    public String Get(int idx)
     {
-        Node current=head;
+        Node current=first;
         int c=0;
         while(current!=null)
         {

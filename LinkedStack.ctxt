@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=boolean\ isEmpty()
+comment1.params=item
+comment1.target=void\ push(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ pop()
+comment3.params=head
+comment3.target=void\ Print(LinkedStack.Node)
+comment4.params=
+comment4.target=int\ Length()
+comment5.params=idx
+comment5.target=java.lang.String\ Get(int)
+numComments=6

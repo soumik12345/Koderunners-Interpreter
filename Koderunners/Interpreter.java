@@ -136,7 +136,35 @@ class Interpreter
                 		memory.push("0");
                 }
                 
-            
+                else if(i == 12)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                		memory.push(Integer.toString(Integer.parseInt(memory.first.item) & Integer.parseInt(memory.first.next.item)));
+                	else
+                		System.out.print("Comparison Not Possible!");
+                }
+                
+                else if(i == 13)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                		memory.push(Integer.toString(Integer.parseInt(memory.first.item) | Integer.parseInt(memory.first.next.item)));
+                	else
+                		System.out.print("Comparison Not Possible!");
+                }
+                
+                else if(i == 14)
+                {
+                	if(isInteger(memory.first.item))
+                	{
+                		if(Integer.parseInt(memory.first.item)==1)
+                			memory.push("0");
+                		else
+                			memory.push("1");
+                			
+                	}
+                	else
+                		System.out.print("Operation Not Possible!");
+                }
         }
     }
 }

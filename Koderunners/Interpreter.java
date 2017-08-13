@@ -52,59 +52,62 @@ class Interpreter
     {
         for(int i: opCode)
         {
-            switch(i)
-            {
-                case 1:
+            
+                if(i == 1)
                 System.exit(0);
-                break;
+                
 
-                case 2:
+                else if(i == 2){
                 if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
                     memory.push(Integer.toString(Integer.parseInt(memory.first.item)+Integer.parseInt(memory.first.next.item)));
                 else
                     memory.push(memory.first.item+memory.first.next.item);
-                break;
+                }
 
-                case 3:
+                else if(i == 3){
                 if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
                     memory.push(Integer.toString(Integer.parseInt(memory.first.item)-Integer.parseInt(memory.first.next.item)));
                 else
                     System.out.print("Subtraction Not Possible!");
-                break;
+                }
 
-                case 4:
+                else if(i == 4){
                 if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
                     memory.push(Integer.toString(Integer.parseInt(memory.first.item)*Integer.parseInt(memory.first.next.item)));
                 else
                     System.out.print("Multiplication Not Possible!");
-                break;
+                }
 
-                case 5:
+                else if(i == 5){
                 if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
                     memory.push(Integer.toString(Integer.parseInt(memory.first.item)/Integer.parseInt(memory.first.next.item)));
                 else
                     System.out.print("Division Not Possible!");
-                break;
+                }
 
-                case 6:
+                else if(i == 6){
                 	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
                         memory.push(Integer.toString(Integer.parseInt(memory.first.item)%Integer.parseInt(memory.first.next.item)));
                     else
                         System.out.print("Modulus Not Possible!");
-                break;
+                }
                 
-                case 7:
+                else if(i == 7){
                 	BufferedReader ob1=new BufferedReader(new InputStreamReader(System.in));
                 	String inp=ob1.readLine();
                 	memory.push(inp);
-                break;
+                }
                 
-                case 8:
+                else if(i == 8)
                 	System.out.print(memory.first.item);
-                break;
                 
+                /*else if(i == 9)
+                {
+                	for(int k = 0; ; k++)
+                		
+                }*/
                 
-            }
+            
         }
     }
 }

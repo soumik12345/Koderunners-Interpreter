@@ -54,45 +54,50 @@ class Interpreter
         {
             
                 if(i == 1)
-                System.exit(0);
-                
+                	System.exit(0);
 
-                else if(i == 2){
-                if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
-                    memory.push(Integer.toString(Integer.parseInt(memory.first.item)+Integer.parseInt(memory.first.next.item)));
-                else
-                    memory.push(memory.first.item+memory.first.next.item);
+                else if(i == 2)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                		memory.push(Integer.toString(Integer.parseInt(memory.first.item)+Integer.parseInt(memory.first.next.item)));
+                	else
+                		memory.push(memory.first.item+memory.first.next.item);
                 }
 
-                else if(i == 3){
-                if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
-                    memory.push(Integer.toString(Integer.parseInt(memory.first.item)-Integer.parseInt(memory.first.next.item)));
-                else
-                    System.out.print("Subtraction Not Possible!");
+                else if(i == 3)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                		memory.push(Integer.toString(Integer.parseInt(memory.first.item)-Integer.parseInt(memory.first.next.item)));
+                	else
+                		System.out.print("Subtraction Not Possible!");
                 }
 
-                else if(i == 4){
-                if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
-                    memory.push(Integer.toString(Integer.parseInt(memory.first.item)*Integer.parseInt(memory.first.next.item)));
-                else
-                    System.out.print("Multiplication Not Possible!");
+                else if(i == 4)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                		memory.push(Integer.toString(Integer.parseInt(memory.first.item)*Integer.parseInt(memory.first.next.item)));
+                	else
+                		System.out.print("Multiplication Not Possible!");
                 }
 
-                else if(i == 5){
-                if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
-                    memory.push(Integer.toString(Integer.parseInt(memory.first.item)/Integer.parseInt(memory.first.next.item)));
-                else
-                    System.out.print("Division Not Possible!");
+                else if(i == 5)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                		memory.push(Integer.toString(Integer.parseInt(memory.first.item)/Integer.parseInt(memory.first.next.item)));
+                	else
+                		System.out.print("Division Not Possible!");
                 }
 
-                else if(i == 6){
+                else if(i == 6)
+                {
                 	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
                         memory.push(Integer.toString(Integer.parseInt(memory.first.item)%Integer.parseInt(memory.first.next.item)));
                     else
                         System.out.print("Modulus Not Possible!");
                 }
                 
-                else if(i == 7){
+                else if(i == 7)
+                {
                 	BufferedReader ob1=new BufferedReader(new InputStreamReader(System.in));
                 	String inp=ob1.readLine();
                 	memory.push(inp);
@@ -101,11 +106,35 @@ class Interpreter
                 else if(i == 8)
                 	System.out.print(memory.first.item);
                 
-                /*else if(i == 9)
+                else if(i == 9)
                 {
-                	for(int k = 0; ; k++)
-                		
-                }*/
+                	if(memory.first.item.equals(memory.first.next.item))
+                		memory.push("1");
+                	else
+                		memory.push("0");
+                }
+                
+                else if(i == 10)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                	{
+                		if(Integer.parseInt(memory.first.item) < Integer.parseInt(memory.first.next.item))
+                			memory.push("1");
+                	}
+                	else
+                		memory.push("0");
+                }
+                
+                else if(i == 11)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                	{
+                		if(Integer.parseInt(memory.first.item) > Integer.parseInt(memory.first.next.item))
+                			memory.push("1");
+                	}
+                	else
+                		memory.push("0");
+                }
                 
             
         }

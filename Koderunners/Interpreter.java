@@ -31,11 +31,16 @@ class Interpreter
 
     public int OpCodeInLine(String s)throws NullPointerException
     {
-    	String t[]=s.split(" ");
     	int c=0;
-        for(int i=0;i<t.length;i++)
+    	if(s.charAt(0)=='x' || s.charAt(0)=='X')
+    		c=100;
+    	String t[]=s.split(" ");
+        for(int i=0;i<t.length;i++) {
         	if(t[i].equalsIgnoreCase("Koderunners"))
         		c++;
+        	else if(t[i].equalsIgnoreCase("X"))
+        		c++;
+        }
         return c;
     }
 
@@ -50,9 +55,10 @@ class Interpreter
 
     public void Interpret()throws Exception
     {
-        for(int i: opCode)
+        //for(int i: opCode)
+    	for(int j=0;j<opCode.size();j++)
         {
-            
+            	int i=opCode.get(j);
                 if(i == 1)
                 	System.exit(0);
 
@@ -164,6 +170,44 @@ class Interpreter
                 	}
                 	else
                 		System.out.print("Operation Not Possible!");
+                }
+                
+                else if(i == 15)
+                {
+                	if(isInteger(memory.first.item) && isInteger(memory.first.next.item))
+                		memory.push(Integer.toString(Integer.parseInt(memory.first.item) ^ Integer.parseInt(memory.first.next.item)));
+                	else
+                		System.out.print("Comparison Not Possible!");
+                }
+                
+                else if(i == 16)
+                {
+                	j++;
+                	i=opCode.get(j);
+                	while(i!=16) {
+                		if(i>=101 && i<=110)
+                			System.out.print(i-101+'0');
+                		else if(i<=136)
+                			System.out.print(i-111+'A');
+                		else if(i<141) {
+                			switch(i) {
+                			case 137:
+                				System.out.print(" ");
+                				break;
+                			case 138:
+                				System.out.print("\n");
+                				break;
+                			case 139:
+                				System.out.print(",");
+                				break;
+                			case 140:
+                				System.out.print(".");
+                				break;
+                			}
+                		}
+                		else if(i<=166)
+                			System.out.print(i-141+'a');
+                	}
                 }
         }
     }
